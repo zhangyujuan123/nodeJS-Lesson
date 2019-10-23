@@ -217,7 +217,7 @@
            $('tr').eq(1).remove();
             var datalist=JSON.parse(data);
             for(var i=0;i<datalist.length;i++){
-                var tr="<tr><td>"+datalist[i].chapterId+"</td><td>"+datalist[i].chapterName+"</td><td>"+datalist[i].views+"</td><td>"+datalist[i].publishTimer+"</td></tr>";
+                var tr="<tr><td>"+datalist[i].chapterId+"</td><td>"+datalist[i].chapterName+"</td><td>"+datalist[i].views+"</td><td>"+'--'+"</td></tr>";
                 console.log(tr);
                 $('table').append(tr);
             }

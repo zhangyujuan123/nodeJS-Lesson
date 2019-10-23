@@ -3,7 +3,7 @@ const querystring=require("querystring");
 const path=require("path");
 const fs=require("fs");
 const url=require("url");
-var userList=[];
+var userList=[{'username':'admin','pwd':'admin'}];
 http.createServer(function(req,res){
     var urlObj=url.parse(req.url);
     var path=urlObj.pathname;
@@ -84,11 +84,10 @@ function checkUser(req,res){
                 strData+=chunk;
             })
             req.on("end",function(){
-                var str=strData.split(/{|:|,|:|}/);
+                var str=strData.split(/{|"|"|:|,|:|}/);
                 var objData={};
-                objData["username"]=str[2];
-                objData["pwd"]=str[4];
-                console.log(objData);
+                objData["username"]=str[5];
+                objData["pwd"]=str[11];
                 for(var i=0;i<userList.length;i++){
                     if(userList[i].username==objData.username){
                         if(userList[i].pwd==objData.pwd){
@@ -100,11 +99,6 @@ function checkUser(req,res){
                         }
                         break;
                     }
-                }
-                if(i==userList.length){
-                    userList.push(objData);
-                    console.log("登陆成功！");
-                    res.end('login success');
                 }
             })
 }
