@@ -3,7 +3,7 @@ var rad=new radio.Radio("music radio","FM 106.7");
 rad.on("play",function(){
     var that=this;
     setTimeout(function(){
-        console.log("lalala");
+        console.log("lalala...");
         rad.emit("stop");
     },2000);
     console.log(that.radioName+" "+that.radioHz+" opened");
